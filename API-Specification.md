@@ -47,6 +47,12 @@
   newman run Point.postman_collection.json
   ```
 
+- run code analysis
+
+  ```sh
+  golangci-lint run ./...
+  ```
+
 - call api with `curl`
 
   ```sh
