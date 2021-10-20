@@ -57,3 +57,17 @@ func Test_ProductPrice789_00ShouldReceive7Point(t *testing.T) {
 		t.Errorf("expect %v point got %v point", expectedResult, actualResult)
 	}
 }
+
+func Test_ProductPrice2999_00ShouldReceive29Point(t *testing.T) {
+	// Arrange
+	expectedResult := 29
+	price := 2999.00
+
+	// Act
+	actualResult := CalculatePoint(price)
+
+	// Assert
+	if expectedResult != actualResult {
+		t.Errorf("expect %v point got %v point", expectedResult, actualResult)
+	}
+}
