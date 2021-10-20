@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  point-system:
+    image: sck/point-system:0.0.1
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
