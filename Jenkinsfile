@@ -10,7 +10,7 @@ pipeline {
 
         stage('run api tests') {
             steps {
-                sh 'start_application'
+                sh 'make start_application'
                 sh 'make run_api_tests'
             }
         }
