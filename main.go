@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 	"point-system/point"
 
@@ -13,7 +14,7 @@ func main() {
 
 	router.Post("/api/v1/calculatePoints", CalculatePointHandler)
 
-	http.ListenAndServe(":3000", router)
+	log.Fatal(http.ListenAndServe(":3000", router))
 }
 
 type PointResponse struct {
@@ -26,12 +27,18 @@ type PriceRequest struct {
 
 func CalculatePointHandler(w http.ResponseWriter, r *http.Request) {
 	price := PriceRequest{}
-	json.NewDecoder(r.Body).Decode(&price)
+	err := json.NewDecoder(r.Body).Decode(&price)
+	if err != nil {
+		log.Println(err)
+	}
 
 	pointResponse := PointResponse{}
 	pointResponse.Value = point.CalculatePoint(price.Value)
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(&pointResponse)
+	err = json.NewEncoder(w).Encode(&pointResponse)
+	if err != nil {
+		log.Println(err)
+	}
 }
