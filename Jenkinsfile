@@ -5,7 +5,6 @@ pipeline {
         stage('run code analysis'){
             steps {
                 sh 'make run_code_analysis'
-                junit 'golangci-lint-junit-report.xml'
             }
         }
 
