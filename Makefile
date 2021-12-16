@@ -1,5 +1,5 @@
 run_code_analysis:
-	golangci-lint run --issues-exit-code=0 --out-format junit-xml ./... > golangci-lint-junit-report.xml
+	golangci-lint run
 run_unit_tests:
 	go test -v -coverprofile=coverage.out ./... 2>&1 | go-junit-report > coverage.xml
 start_application:
